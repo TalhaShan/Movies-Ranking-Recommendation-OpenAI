@@ -21,7 +21,8 @@ func main() {
 	var client *mongo.Client = database.Connect()
 
 	router.GET("/movies", controllers.GetMovies(client))
-	router.GET("/movie/:imbd_id", controllers.GetMovie(client))
+	router.GET("/movie/:imdb_id", controllers.GetMovie(client))
+	router.POST("/addmovie", controllers.AddMovie(client))
 
 	if err := router.Run(":8080"); err != nil {
 		fmt.Println("Failed to start server", err)
